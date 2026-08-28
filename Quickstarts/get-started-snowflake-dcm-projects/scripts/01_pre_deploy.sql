@@ -37,6 +37,20 @@ USE ROLE dcm_developer;
 
 CREATE DATABASE IF NOT EXISTS dcm_demo;
 CREATE SCHEMA IF NOT EXISTS dcm_demo.projects;
+CREATE OR REPLACE SCHEMA dcm_demo.integrations;
+
+USE dcm_demo.integrations;
+CREATE OR REPLACE SECRET dcm_demo.integrations.git_secret
+  TYPE = password
+  USERNAME = 'wangwang2jiajia'
+  PASSWORD = 'Access Token';
+
+CREATE OR REPLACE API INTEGRATION my_git_api_integration
+  API_PROVIDER = git_https_api
+  API_ALLOWED_PREFIXES = ('https://github.com/wangwang2jiajia')
+  -- Comment out the following line if your forked repository is public
+  ALLOWED_AUTHENTICATION_SECRETS = (dcm_demo.integrations.git_secret)
+  ENABLED = TRUE;
 
 CREATE OR REPLACE DCM PROJECT dcm_demo.projects.dcm_project_dev
     COMMENT = 'for testing DCM Projects Quickstarts';
