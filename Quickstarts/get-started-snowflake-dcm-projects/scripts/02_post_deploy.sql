@@ -150,3 +150,13 @@ SELECT * FROM dcm_demo_1_dev.serve.v_dashboard_daily_sales;
 SELECT * FROM dcm_demo_1_dev.analytics.enriched_order_details;
 SELECT * FROM dcm_demo_1_dev.analytics.menu_item_popularity;
 SELECT * FROM dcm_demo_1_dev.analytics.customer_spending_summary;
+
+EXECUTE DCM PROJECT DCM_DEMO.PROJECTS.DCM_PROJECT_DEV REFRESH ALL;
+
+SELECT * FROM dcm_demo_1_dev.serve.v_dashboard_daily_sales;
+
+SELECT * FROM dcm_demo_1_dev.analytics.enriched_order_details;
+SELECT * FROM dcm_demo_1_dev.analytics.menu_item_popularity;
+SELECT * FROM dcm_demo_1_dev.analytics.customer_spending_summary;
+
+
